@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CandidatController!{% endblock %}
+{% block body %}
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <nav id="sidebar">
+                        <div class="sidebar-header">
+                            <h3>Bootstrap Sidebar</h3>
+                        </div>
+                
+                        <ul class="list-unstyled components">
+                            <p>Dummy Heading</p>
+                            <li class="active">
+                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                                <ul class="collapse list-unstyled" id="homeSubmenu">
+                                    <li>
+                                        <a href="#">Home 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Home 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Home 3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                                <ul class="collapse list-unstyled" id="pageSubmenu">
+                                    <li>
+                                        <a href="#">Page 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Page 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Page 3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>                
+                </div>
+                <div class="col-10">
+                    <h1>Information Candidat</h1>
+                    <div class="container p-5">
+                        {{form_start(CandidatForm)}}
+                        <div class="form-group">
+                            {{form_label(CandidatForm.firstname)}}
+                            {{form_widget(CandidatForm.firstname, {'attr': {'class': 'form-control'}})}}
+                            <small id="firstnameHelp" class="form-text text-muted">{{form_help(CandidatForm.firstname)}}</small>
+                        </div>
+                        <div class="form-group">
+                            {{form_label(CandidatForm.lastname)}}
+                            {{form_widget(CandidatForm.lastname, {'attr': {'class': 'form-control'}})}}
+                            <small id="firstnameHelp" class="form-text text-muted">{{form_help(CandidatForm.lastname)}}</small>
+                        </div>
+                        <div class="form-group">
+                            {{form_label(CandidatForm.profile_picture)}}
+                            {{form_widget(CandidatForm.profile_picture, {'attr': {'class': 'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            {{form_label(CandidatForm.date_birth)}}
+                            {{form_widget(CandidatForm.date_birth)}}          
+                        </div>
+                        <div class="form-group">
+                            {{form_label(CandidatForm.is_searching)}}
+                            {{form_widget(CandidatForm.is_searching, {'attr': {'class': 'p-2'}})}}
+                        </div>
+                        <div class="form-group">
+                            {{form_label(CandidatForm.hard_skills)}}
+                            <ul id="hard-skills-fields-list" class="list-group"
+                            data-prototype="{{ form_widget(CandidatForm.hard_skills.vars.prototype)|e }}"
+                            data-widget-tags="{{ '<li></li>'|e }}"
+                            data-widget-counter="{{ CandidatForm.hard_skills|length }}">
+                            {% for skills in CandidatForm.hard_skills %}
+                                <li>
+                                    {{ form_errors(skills) }}
+                                    {{ form_widget(skills) }}
+                                </li>
+                            {% endfor %}
+                            </ul>
+                            <button type="button" class="btn btn-primary add-another-hard-skill-widget" data-list-selector="#hard-skills-fields-list">Ajouter un hard skill</button>
+                        </div>
+                        <div class="form-group">
+                            {{form_label(CandidatForm.soft_skills)}}
+                            <ul id="soft-skills-fields-list" class="list-group"
+                            data-prototype="{{ form_widget(CandidatForm.soft_skills.vars.prototype)|e }}"
+                            data-widget-tags="{{ '<li></li>'|e }}"
+                            data-widget-counter="{{ CandidatForm.soft_skills|length }}">
+                            {% for skills in CandidatForm.soft_skills %}
+                                <li>
+                                    {{ form_errors(skills) }}
+                                    {{ form_widget(skills) }}
+                                </li>
+                            {% endfor %}
+                            </ul>
+                            <button type="button" class="btn btn-primary add-another-soft-skill-widget" data-list-selector="#soft-skills-fields-list">Ajouter un soft skill</button>
+                        </div>
+                        <div class="form-group">
+                            {{form_label(CandidatForm.formations)}}
+                            {{form_widget(CandidatForm.formations, {'attr': {'class': 'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            {{form_label(CandidatForm.studies_level)}}
+                            {{form_widget(CandidatForm.studies_level, {'attr': {'class': 'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            {{form_label(CandidatForm.pro_exp)}}
+                            {{form_widget(CandidatForm.pro_exp, {'attr': {'class': 'form-control'}})}}
+                        </div>
+                            {{form_label(CandidatForm.linkdin)}}
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon3">https://www.linkedin.com/in/</span>
+                                </div>
+                                    {{form_widget(CandidatForm.linkdin, {'attr': {'class': 'form-control'}})}}
+                            </div>
+                        <div class="form-group">
+                            {{form_label(CandidatForm.searched_region)}}
+                            {{form_widget(CandidatForm.searched_region, {'attr': {'class': 'form-control'}})}}
+                        </div>
+                        {{ form_row(CandidatForm._token) }}
+                        <div class="form-group mt-5">
+                            {{form_row(CandidatForm.Submit)}}
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+{% endblock %}
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        function addAnotherCollectionField(element = ''){
+                var list = $('#'+element)
+                // Try to find the counter of the list or use the length of the list
+                var counter = list.data('widget-counter') || list.children().length;
+        
+                // grab the prototype template
+                var newWidget = list.attr('data-prototype');
+                // replace the "__name__" used in the id and name of the prototype
+                // with a number that's unique to your emails
+                // end name attribute looks like name="contact[emails][2]"
+                newWidget = newWidget.replace(/__name__/g, counter);
+                // Increase the counter
+                counter++;
+                // And store it, the length cannot be used if deleting widgets is allowed
+                list.data('widget-counter', counter);
+                
+                // create a new list element and add it to the list
+                var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+                newElem.children().first().addClass('form-control')
+                newElem.addClass('list-group-item')
+                newElem.appendTo(list);
+        }
+        jQuery(document).ready(function () {
+            $('.add-another-soft-skill-widget').on('click', function(e){
+                addAnotherCollectionField('soft-skills-fields-list')
+            })
+            $('.add-another-hard-skill-widget').on('click', function(e){
+                addAnotherCollectionField('hard-skills-fields-list')
+            })
+
+            if($('.alert').is(':empty') ){
+                $('.alert').addClass('hidden')
+            }
+
+        });
+    </script>
+{% endblock %}
+

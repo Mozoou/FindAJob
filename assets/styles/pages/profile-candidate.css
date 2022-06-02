@@ -1,0 +1,48 @@
+#page-candidate main #intro .candidate-infos ul {
+    list-style: none;
+}
+
+#page-candidate main #intro .candidate-infos ul li {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+#page-candidate main form label {
+    margin: 1rem 0;
+}
+
+#page-candidate main form input,
+#page-candidate main form select {
+    font-size: 1.5rem;
+}
+
+#page-candidate main #intro .candidate-infos ul li.name {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#page-candidate main .card .actions {
+    margin-top: 3rem;
+}
+
+#page-candidate main .card .actions .button {
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-right: 2rem;
+}
+
+#page-candidate main .add {
+    margin-top: 4rem;
+}
+
+.infos-inline span {
+    display: inline-block;
+    margin-right: 3rem;
+}
+
+#page-candidate main #actions {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 999;
+}

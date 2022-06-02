@@ -6,7 +6,19 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import './styles/app.scss';
+import './styles/pages/candidate.css';
+import './styles/pages/company.css';
+import './styles/pages/home.css';
+import './styles/pages/login.css';
+import './styles/pages/matching-candidate.css';
+import './styles/pages/profile-candidate.css';
+import './styles/pages/admin/candidates.css';
+import './styles/pages/admin/companies.css';
+
+
+// You can specify which plugins you need
+import { Tooltip, Toast, Popover } from 'bootstrap';
 
 // start the Stimulus application
 import './bootstrap';

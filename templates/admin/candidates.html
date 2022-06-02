@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr-FR" itemscope="itemscope" itemtype="https://schema.org/WebPage">
+
+<head>
+    <meta charset="UTF-8">
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lamatch - Admin - Gérer les Candidats</title>
+
+    <link rel="icon" href="https://lamacompta.co/wp-content/themes/oceanwp_child/assets/images/logo-lamacompta-icono.svg" sizes="32x32">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../assets/css/header.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../assets/css/pages/admin/candidates.css" type="text/css" media="all">
+</head>
+
+<body id="page-candidates" class="simple-page">
+    <header id="site-header" class="container pt-5">
+        <div class="row">
+            <div class="col-3">
+                <div id="site-logo" class="">
+                    <a href="/">
+                        🚀 Lamatch
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-9 d-flex justify-content-end">
+                <nav id="navbar" class="navbar me-5">
+                    <ul class="navbar-items d-flex">
+                        <li>
+                            <a title="Accueil" href="../home.html" class="menu-link button">
+                                🏠 Accueil
+                            </a>
+                        </li>
+
+                        <li>
+                            <a title="Matching" href="../matching-candidate.html" class="menu-link button">
+                                ⚡ Matching !
+                            </a>
+                        </li>
+
+                        <li>
+                            <a title="Mon Profil" href="../profile-candidate.html" class="menu-link button">
+                                ⚙ Mon Profil
+                            </a>
+                        </li>
+
+                        <li>
+                            <a title="Me déconnecter" href="../login.html" class="menu-link button logout">
+                                <span></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                
+                <nav id="navbar-admin" class="navbar">
+                    <span class="title">Admin</span>
+
+                    <ul class="navbar-items d-flex">
+                        <li>
+                            <a title="Gérer les employeurs" href="./companies.html" class="menu-link admin button black">
+                                Gérer les employeurs
+                            </a>
+                        </li>
+
+                        <li>
+                            <a title="Gérer les candidats" href="./candidates.html" class="menu-link admin button black active">
+                                Gérer les candidats
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Gérer les Candidats</h1>
+        </div>
+
+        <section id="candidates" class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card candidate p-0">
+                        <div class="image-wrapper">
+                            <img src="https://burst.shopifycdn.com/photos/portrait-young-man-smiling.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="" class="card-img-top">
+                        </div>
+    
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Jean-Eudes ROGER
+                            </h3>
+    
+                            <div class="candidate-infos">
+                                <ul>
+                                    <li class="status">
+                                        ✔ En recherche d'opportunités
+                                    </li>
+    
+                                    <li class="age">
+                                        👶 21 ans
+                                    </li>
+    
+                                    <li class="level-of-study">
+                                        🎓 Bac + 2
+                                    </li>
+    
+                                    <li class="regions-targeted">
+                                        🚩 Recherche en Bretagne, Pays de la Loire et Basse-Normandie
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="show-candidate-wrapper">
+                                <a href="../candidate.html" class="button show-candidate" title="Me rendre sur la fiche du candidat">
+                                    Voir le candidat >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="card candidate p-0">
+                        <div class="image-wrapper">
+                            <img src="https://burst.shopifycdn.com/photos/stylish-man-in-bow-tie.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="" class="card-img-top">
+                        </div>
+    
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Zakaria BICHON
+                            </h3>
+    
+                            <div class="candidate-infos">
+                                <ul>
+                                    <li class="status">
+                                        ✔ En recherche d'opportunités
+                                    </li>
+    
+                                    <li class="age">
+                                        👶 31 ans
+                                    </li>
+    
+                                    <li class="level-of-study">
+                                        🎓 Bac
+                                    </li>
+    
+                                    <li class="regions-targeted">
+                                        🚩 Recherche en région Centre
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="show-candidate-wrapper">
+                                <a href="../candidate.html" class="button show-candidate" title="Me rendre sur la fiche du candidat">
+                                    Voir le candidat >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="card candidate p-0">
+                        <div class="image-wrapper">
+                            <img src="https://burst.shopifycdn.com/photos/woman-portrait-on-pink-brick.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="" class="card-img-top">
+                        </div>
+    
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Marie-Ange LA BRANCHE
+                            </h3>
+    
+                            <div class="candidate-infos">
+                                <ul>
+                                    <li class="status">
+                                        ✔ En recherche d'opportunités
+                                    </li>
+    
+                                    <li class="age">
+                                        👶 32 ans
+                                    </li>
+    
+                                    <li class="level-of-study">
+                                        🎓 Bac
+                                    </li>
+    
+                                    <li class="regions-targeted">
+                                        🚩 Recherche dans le Limousin
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="show-candidate-wrapper">
+                                <a href="../candidate.html" class="button show-candidate" title="Me rendre sur la fiche du candidat">
+                                    Voir le candidat >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="card candidate p-0">
+                        <div class="image-wrapper">
+                            <img src="https://burst.shopifycdn.com/photos/woman-outside-brownstone.jpg?width=1850&format=pjpg&exif=1&iptc=1" alt="" class="card-img-top">
+                        </div>
+    
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Géraldine DE MONACO
+                            </h3>
+    
+                            <div class="candidate-infos">
+                                <ul>
+                                    <li class="status">
+                                        ❌ Ne recherche pas actuellement
+                                    </li>
+    
+                                    <li class="age">
+                                        👶 35 ans
+                                    </li>
+    
+                                    <li class="level-of-study">
+                                        🎓 Bac + 2
+                                    </li>
+    
+                                    <li class="regions-targeted">
+                                        🚩 Recherche en Bretagne, Aquitaine, Auvergne et Lorraine
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="show-candidate-wrapper">
+                                <a href="../candidate.html" class="button show-candidate" title="Me rendre sur la fiche du candidat">
+                                    Voir le candidat >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="card candidate p-0">
+                        <div class="image-wrapper">
+                            <img src="https://burst.shopifycdn.com/photos/friendly-smiling-man.jpg?width=1000&format=pjpg&exif=1&iptc=1" alt="" class="card-img-top">
+                        </div>
+    
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Matéo GUOGE
+                            </h3>
+    
+                            <div class="candidate-infos">
+                                <ul>
+                                    <li class="status">
+                                        ❌ Ne recherche pas actuellement
+                                    </li>
+    
+                                    <li class="age">
+                                        👶 34 ans
+                                    </li>
+    
+                                    <li class="level-of-study">
+                                        🎓 Bac + 3
+                                    </li>
+    
+                                    <li class="regions-targeted">
+                                        🚩 Recherche en Ile de France
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="show-candidate-wrapper">
+                                <a href="../candidate.html" class="button show-candidate" title="Me rendre sur la fiche du candidat">
+                                    Voir le candidat >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="card candidate p-0">
+                        <div class="image-wrapper">
+                            <img src="https://burst.shopifycdn.com/photos/smiling-man-in-blue.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="" class="card-img-top">
+                        </div>
+    
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Mohamed RAMTAH
+                            </h3>
+    
+                            <div class="candidate-infos">
+                                <ul>
+                                    <li class="status">
+                                        ✔ En recherche d'opportunités
+                                    </li>
+    
+                                    <li class="age">
+                                        👶 21 ans
+                                    </li>
+    
+                                    <li class="level-of-study">
+                                        🎓 Bac + 5
+                                    </li>
+    
+                                    <li class="regions-targeted">
+                                        🚩 Recherche en Ile de France
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="show-candidate-wrapper">
+                                <a href="../candidate.html" class="button show-candidate" title="Me rendre sur la fiche du candidat">
+                                    Voir le candidat >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="card candidate p-0">
+                        <div class="image-wrapper">
+                            <img src="https://burst.shopifycdn.com/photos/young-business-woman-smiling-portrait.jpg?width=1850&format=pjpg&exif=1&iptc=1" alt="" class="card-img-top">
+                        </div>
+    
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Leslie LEROUX
+                            </h3>
+    
+                            <div class="candidate-infos">
+                                <ul>
+                                    <li class="status">
+                                        ✔ En recherche d'opportunités
+                                    </li>
+    
+                                    <li class="age">
+                                        👶 27 ans
+                                    </li>
+    
+                                    <li class="level-of-study">
+                                        🎓 Bac
+                                    </li>
+    
+                                    <li class="regions-targeted">
+                                        🚩 Recherche en Bretagne
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="show-candidate-wrapper">
+                                <a href="../candidate.html" class="button show-candidate" title="Me rendre sur la fiche du candidat">
+                                    Voir le candidat >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="card candidate p-0">
+                        <div class="image-wrapper">
+                            <img src="https://burst.shopifycdn.com/photos/model-poses-in-velvet-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="" class="card-img-top">
+                        </div>
+    
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Salma ADJAMAGBO
+                            </h3>
+    
+                            <div class="candidate-infos">
+                                <ul>
+                                    <li class="status">
+                                        ✔ En recherche d'opportunités
+                                    </li>
+    
+                                    <li class="age">
+                                        👶 25 ans
+                                    </li>
+    
+                                    <li class="level-of-study">
+                                        🎓 Bac + 4
+                                    </li>
+    
+                                    <li class="regions-targeted">
+                                        🚩 Recherche en Nord Pas de Calais
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="show-candidate-wrapper">
+                                <a href="../candidate.html" class="button show-candidate" title="Me rendre sur la fiche du candidat">
+                                    Voir le candidat >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="card candidate p-0">
+                        <div class="image-wrapper">
+                            <img src="https://media-exp1.licdn.com/dms/image/C5603AQEg3eEPvfy7LQ/profile-displayphoto-shrink_800_800/0/1608671326581?e=1635379200&v=beta&t=gGmtHegtAr9dPJ0-Wv0IM2oPXx1QdPq2dqMLCxS2MGo" alt="" class="card-img-top">
+                        </div>
+    
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Audrey BRULLON
+                            </h3>
+    
+                            <div class="candidate-infos">
+                                <ul>
+                                    <li class="status">
+                                        ❌ Ne recherche pas actuellement
+                                    </li>
+    
+                                    <li class="age">
+                                        👶 24 ans
+                                    </li>
+    
+                                    <li class="level-of-study">
+                                        🎓 Bac + 3
+                                    </li>
+    
+                                    <li class="regions-targeted">
+                                        🚩 Recherche en Alsace et Lorraine
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="show-candidate-wrapper">
+                                <a href="../candidate.html" class="button show-candidate" title="Me rendre sur la fiche du candidat">
+                                    Voir le candidat >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center show-more-wrapper">
+                    <a href="" class="button success" title="Charger plus de candidats">En voir plus +</a>
+                </div>
+            </div>
+        </section>
+
+    </main><!-- #main -->
+
+    <footer id="site-footer" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="copyright" role="contentinfo">
+                        © Copyright 2021 – Lamatch tous droits réservés
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

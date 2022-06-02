@@ -1,0 +1,44 @@
+#page-candidates #candidates > .row > div {
+    padding: 2rem;
+}
+
+#page-candidates #candidates .candidate {
+    min-height: 58rem;
+}
+
+#page-candidates #candidates .candidate .image-wrapper {
+    height: 27rem;
+    overflow: hidden;
+}
+
+#page-candidates #candidates .candidate .image-wrapper img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    min-height: 100%;
+    min-width: 100%
+}
+
+#page-candidates #candidates .candidate .card-body {
+    padding: 2rem;
+}
+
+#page-candidates #candidates .candidate .card-body .show-candidate-wrapper {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#page-candidates #candidates .candidate .card-body .candidate-infos > ul {
+    list-style: none;
+    padding: 0;
+}
+
+#page-candidates #candidates .candidate .card-body .candidate-infos > ul li {
+    margin-bottom: 1rem;
+}
+
+#page-candidates .show-more-wrapper {
+    margin-top: 8rem;
+}

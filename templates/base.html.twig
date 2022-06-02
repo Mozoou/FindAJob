@@ -1,19 +1,125 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Home - FindAJob{% endblock %}</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"
+    />
+    {# Run `composer require symfony/webpack-encore-bundle` to start using
+    Symfony UX #} 
+    {% block stylesheets %}{{encore_entry_link_tags("app")}}{% endblock %}
+  </head>
+  <body>
+    {% block header %}
+    <header id="site-header" class="container pt-5">
+      <div class="row">
+        <div class="col-3">
+          <div id="site-logo" class="">
+            <a href="/"> 🚀 FindAJob </a>
+          </div>
+        </div>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+        <div class="col-9 d-flex justify-content-end">
+          <nav id="navbar" class="navbar me-5">
+            <ul class="navbar-items d-flex">
+              <li>
+                <a
+                  title="Accueil"
+                  href="home.html"
+                  class="menu-link button active"
+                >
+                  🏠 Accueil
+                </a>
+              </li>
+
+              <li>
+                <a
+                  title="Accéder au Matching !"
+                  href="matching-candidate.html"
+                  class="menu-link button"
+                >
+                  ⚡ Matching !
+                </a>
+              </li>
+
+              <li>
+                <a
+                  title="Mon Profil"
+                  href="profile-candidate.html"
+                  class="menu-link button"
+                >
+                  ⚙ Mon Profil
+                </a>
+              </li>
+
+              <li>
+                <a
+                  title="Me déconnecter"
+                  href="login.html"
+                  class="menu-link button logout"
+                >
+                  <span></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <nav id="navbar-admin" class="navbar">
+            <span class="title">Admin</span>
+
+            <ul class="navbar-items d-flex">
+              <li>
+                <a
+                  title="Gérer les employeurs"
+                  href="admin/companies.html"
+                  class="menu-link admin button black"
+                >
+                  Gérer les employeurs
+                </a>
+              </li>
+
+              <li>
+                <a
+                  title="Gérer les candidats"
+                  href="admin/candidates.html"
+                  class="menu-link admin button black"
+                >
+                  Gérer les candidats
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    {% for label, messages in app.flashes %}
+      {% for message in messages %}
+            <div class="d-flex justify-content-center alert alert-{{label}} flash-{{ label }}">
+              {{ message }}
+            </div>
+      {% endfor %}
+      {% endfor %}
+    {% endblock %}
+    {% block body %}
+      {# read and display all flash messages #}
+      
+    {% endblock %}
+    {% block footer %}
+    <footer id="site-footer" class="d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center">
+            <div class="copyright" role="contentinfo">
+              © Copyright 2021 – FindAJob
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    {% endblock %} {% block javascripts %}
+    {{ encore_entry_script_tags("app") }}
+    {% endblock %}
+  </body>
 </html>

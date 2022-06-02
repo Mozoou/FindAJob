@@ -1,0 +1,39 @@
+#page-matching-candidate #companies .company {
+    max-height: 20rem;
+}
+
+#page-matching-candidate #companies .company .image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 3rem;
+}
+
+#page-matching-candidate #companies .company .image-wrapper img {
+    max-width: 100%;
+    max-height: 12rem;
+}
+
+#page-matching-candidate #companies .company .company-infos-wrapper {
+    padding: 2rem 0;
+}
+
+#page-matching-candidate #companies .company .company-infos-wrapper .company-infos ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#page-matching-candidate #companies .company .company-infos-wrapper .company-infos ul li {
+    margin-bottom: 1rem;
+}
+
+#page-matching-candidate #companies .company .show-company-wrapper {
+    display: flex;
+    align-items: center;
+    padding-right: 2rem;
+}
+
+#page-matching-candidate .show-more-wrapper {
+    margin-top: 8rem;
+}

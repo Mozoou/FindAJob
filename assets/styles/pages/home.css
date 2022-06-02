@@ -1,0 +1,12 @@
+#page-home #stats .stat {
+    text-align: center;
+}
+
+#page-home #stats .stat .stat-figure {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+#page-home #stats .stat .stat-text {
+    font-size: 2rem;
+}

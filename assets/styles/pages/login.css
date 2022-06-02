@@ -1,0 +1,31 @@
+#page-login .login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 30rem;
+    height: 30rem;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 2rem;
+    box-shadow: 20px 20px 118px rgb(0 0 0 / 20%);
+    border: none;
+}
+#page-login .login-wrapper h1 {
+    margin-bottom: 3rem;
+}
+
+#page-login .login-wrapper input {
+    margin-bottom: 2rem;
+    font-size: 1.7rem;
+}
+
+#page-login #site-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

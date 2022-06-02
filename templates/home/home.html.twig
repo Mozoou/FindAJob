@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page d'Accueil{% endblock %}
+
+{% block body %}
+<main>
+    <section id="intro" class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Bienvenue sur Lamatch !</h1>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="container">
+        <div class="row">
+            <div class="col-12 stats-wrapper">
+                <div class="row">
+                    <div class="col-3"></div>
+
+                    <div class="col-3">
+                        <div class="card stat">
+                            <p class="stat-figure">3093</p>
+
+                            <p class="stat-text">
+                                Employeurs
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card stat">
+                            <p class="stat-figure color-blue1">43 923</p>
+
+                            <p class="stat-text">
+                                Candidats
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-3"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3"></div>
+
+                    <div class="col-3">
+                        <div class="card stat">
+                            <p class="stat-figure color-danger">2 403 322</p>
+
+                            <p class="stat-text">
+                                Matching lancés 🎉
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card stat">
+                            <p class="stat-figure color-success">90 421</p>
+
+                            <p class="stat-text">
+                                Recrutements bouclés 💪
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="actions" class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="matching-candidate.html" class="button success">
+                    Je lance le Matching ! ⚡
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

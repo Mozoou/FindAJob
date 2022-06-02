@@ -1,0 +1,24 @@
+#page-candidate main #intro .candidate-infos ul {
+    list-style: none;
+}
+
+#page-candidate main #intro .candidate-infos ul li {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+#page-candidate main #intro .candidate-infos ul li.name {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#page-candidate main #intro .candidate-infos ul li.linkedin svg {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.75rem;
+}
+
+.infos-inline span {
+    display: inline-block;
+    margin-right: 3rem;
+}

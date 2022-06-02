@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompaniesController!{% endblock %}
+
+{% block body %}
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <nav id="sidebar">
+                        <div class="sidebar-header">
+                            <h3>Bootstrap Sidebar</h3>
+                        </div>
+                
+                        <ul class="list-unstyled components">
+                            <p>Dummy Heading</p>
+                            <li class="active">
+                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                                <ul class="collapse list-unstyled" id="homeSubmenu">
+                                    <li>
+                                        <a href="#">Home 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Home 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Home 3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                                <ul class="collapse list-unstyled" id="pageSubmenu">
+                                    <li>
+                                        <a href="#">Page 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Page 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Page 3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>                
+                </div>
+                <div class="col-10">
+                    <h1>Information Entreprise</h1>
+                    <div class="container p-5">
+                        {{form_start(form)}}
+                        <div class="form-group">
+                            {{form_label(form.name)}}
+                            {{form_widget(form.name, {'attr': {'class': 'form-control'}})}}
+                            <small id="nameHelp" class="form-text text-muted">{{form_help(form.name)}}</small>
+                        </div>
+                        <div class="form-group">
+                            {{form_label(form.siret)}}
+                            {{form_widget(form.siret, {'attr': {'class': 'form-control'}})}}
+                            <small id="nameHelp" class="form-text text-muted">{{form_help(form.siret)}}</small>
+                        </div>
+                        <div class="form-group">
+                            {{form_label(form.siren)}}
+                            {{form_widget(form.siren, {'attr': {'class': 'form-control'}})}}
+                            <small id="nameHelp" class="form-text text-muted">{{form_help(form.siren)}}</small>
+                        </div>
+                        <div class="form-group">
+                            {{form_label(form.tva)}}
+                            {{form_widget(form.tva, {'attr': {'class': 'form-control'}})}}
+                            <small id="nameHelp" class="form-text text-muted">{{form_help(form.tva)}}</small>
+                        </div>
+                        <div class="form-group">
+                            {{form_label(form.logo)}}
+                            {{form_widget(form.logo, {'attr': {'class': 'form-control'}})}}
+                        </div>
+                        <div class="form-group">  
+                            {{form_label(form.linkedin)}}
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon3">https://www.linkedin.com/</span>
+                                </div>
+                                    {{form_widget(form.linkedin, {'attr': {'class': 'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{form_label(form.searched_region)}}
+                            {{form_widget(form.searched_region, {'attr': {'class': 'form-control'}})}}
+                        </div>
+                        {{ form_row(form._token) }}
+                        <div class="form-group mt-5">
+                            {{form_row(form.Submit)}}
+                        </div>
+                        {{form_end(form)}}
+                    </div>
+                    </div>
+            </div>
+        </div>
+{% endblock %}
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    function isValidSiret(siret)
+    {
+        siret = trim($values);
+        if(empty(siret) || strlen(siret) != 14){   
+            return false;
+        }
+        var sum = 0;
+        for(var i = 0 ; i < 14; i++){
+        if($i % 2 == 0){
+            var tmp = siret[i] * 2;
+            tmp = tmp > 9 ? tmp - 9 : tmp;
+        }else{
+            tmp= siret[i];
+        }
+        sum += tmp;
+        }
+        if(sum%10 !== 0){
+            return false;
+        }
+        return true;
+    }
+    function nSIREN(siret) {
+        return substr(siret, 0, 9);
+    }
+    function nTVA(siren) {
+        return "FR" + (( 12 + 3 * ( siren % 97 ) ) % 97 ) + siren;
+    }
+
+    jQuery(document).ready(function () {
+        $('#companies_siret').on('input', function(e){
+            console.log($(this))
+        })
+    })
+
+</script>
+{% endblock %}
