@@ -35,8 +35,12 @@ security:
         - { path: ^/register, allow_if : "!is_granted('ROLE_USER')"}
         - { path: ^/login, allow_if : "!is_granted('ROLE_USER')"}
         - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/candidat, roles: ROLE_CANDIDAT}
-        - { path: ^/companies, roles: ROLE_COMPANY}
+        - { path: ^/candidat/edit, roles: ROLE_CANDIDAT}
+        - { path: ^/candidat/new, roles: ROLE_CANDIDAT}
+
+        - { path: ^/companies/edit, roles: ROLE_COMPANY}
+        - { path: ^/companies/new, roles: ROLE_COMPANY}
+
 
 
 when@test:

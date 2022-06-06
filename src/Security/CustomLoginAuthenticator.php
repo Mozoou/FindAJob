@@ -61,6 +61,9 @@ class CustomLoginAuthenticator extends AbstractLoginFormAuthenticator
         elseif(in_array('ROLE_COMPANY', $roles)){
             return new RedirectResponse($this->urlGenerator->generate('app_new_company'));
         }
+        else{
+            return new RedirectResponse($this->urlGenerator->generate('app_home'));
+        }
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

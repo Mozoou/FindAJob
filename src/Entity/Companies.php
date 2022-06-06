@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CompaniesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CompaniesRepository::class)]
@@ -48,6 +50,14 @@ class Companies
 
     #[ORM\Column(type: 'string', length: 255)]
     private $searched_region;
+
+    #[ORM\OneToMany(mappedBy: 'companies', targetEntity: User::class)]
+    private $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -126,7 +136,7 @@ class Companies
         return $this;
     }
 
-    public function isIsSearching(): ?bool
+    public function isSearching(): ?bool
     {
         return $this->is_searching;
     }
@@ -194,6 +204,36 @@ class Companies
     public function setSearchedRegion(string $searched_region): self
     {
         $this->searched_region = $searched_region;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setCompanies($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getCompanies() === $this) {
+                $user->setCompanies(null);
+            }
+        }
 
         return $this;
     }

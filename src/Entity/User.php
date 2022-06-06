@@ -33,6 +33,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'user', targetEntity: Candidat::class, cascade: ['persist', 'remove'])]
     private $candidat;
 
+    #[ORM\ManyToOne(targetEntity: Companies::class, inversedBy: 'users')]
+    private $companies;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -128,6 +131,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->candidat = $candidat;
+
+        return $this;
+    }
+
+    public function getCompanies(): ?Companies
+    {
+        return $this->companies;
+    }
+
+    public function setCompanies(?Companies $companies): self
+    {
+        $this->companies = $companies;
 
         return $this;
     }

@@ -1,0 +1,138 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MatchingController!{% endblock %}
+
+{% block body %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <h2>Vos critère de recherches</h2>
+                <section id="intro" class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Voici les employeurs qui correspondent à votre profil (d'après notre algorithme ultra sophistiqué 🧐) :</p>
+                            <p>Le pourcentage affiché correspond au taux de correspondance calculé entre votre profil et l'employeur.</p>
+                        </div>
+                    </div>
+                </section>
+                <section id="result" class="container">
+                    <div class="card-group">
+                    {% if app.user.companies == null %}
+                    {% for profil in ResultProfiles %}
+                        <div class="card company p-0 h-50 d-inline-block"> 
+                            <h3 class="card-title text-center">
+                                {{profil.name}}
+                            </h3>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="company-infos ms-3">
+                                        
+                                            <img class="img-fluid" src="{{asset('uploads/companies/')}}{{profil.logo}}" alt="" height="100" width="200">
+                                        
+                                        <ul>
+                                            <li class="workforce">
+                                                👨‍👩‍👧‍👦 1 à 9 salariés
+                                            </li>
+                                            <li class="domain">
+                                                {% for domaine in profil.searchingfor %}
+                                                    <b>{{domaine|capitalize}}</b> 
+                                                {% endfor %}
+                                            </li>
+                                            <li class="regions-targeted">
+                                                🚩 <b>{{profil.searchedregion|getRegion(profil.searchedregion)}} ({{profil.searchedregion}})</b>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <h5 class="mb-5">Pourcentage de compatibilité</h5>
+                                    <div class="score-wrapper">
+                                        <div class="circle-progress p60">
+                                            <span class="progress-left">
+                                                <span class="progress-bar"></span>
+                                            </span>
+                                            <span class="progress-right">
+                                                <span class="progress-bar"></span>
+                                            </span>
+                                            <div class="progress-value">60%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{path('app_view_company', {id : profil.id})}}" class="button show-company text-center" title="Me rendre sur la fiche de l'employeur">Voir la fiche employeur</a>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="container mt-5 d-flex  test">
+                    {% for profil in ResultProfiles %}
+                            <div class="card p-3 me-5">
+                                <div class="">
+                                <div class="image me-2 mb-4">
+                                <img src="{{asset('/uploads/candidat/')}}{{profil.profilepicture}}" class="image-centred rounded" width="155" >
+                                </div>
+                                <div class="w-100 text-center">
+                                <h4 class="mb-0 mt-0">{{profil.firstname}} {{profil.lastname}}</h4>
+                                <span>Developpeur PHP</span>
+                                <ul class="list-group list-group-flush mt-2">
+                                    <li class="list-group-item">En recherche d'emploi : {% if profil.issearching == true %}<b>Oui</b>{% else %}<b>Non</b>{% endif %} </li>
+                                    <li class="list-group-item">Date de naissance : <b>{{profil.datebirth|date('d/m/Y')}}</b></li>
+                                    <li class="list-group-item">Exp professionnel: <b>{{profil.proexp|showExp(profil.proexp)}}</b></li>
+                                    <li class="list-group-item">Niveau d'études: <b>BAC +{{profil.studieslevel}}</b></li>
+                                </ul>
+                                
+                                <div class="mt-2 d-flex flex-row align-items-center">
+                                    <button class="btn btn-sm btn-primary me-2">Message</button>
+                                    <a href="{{path('app_view_candidat', {id : profil.id})}}"><button class="btn btn-sm btn-primary">Voir profil</button></a>
+                                </div>
+                                </div>                       
+                                </div>
+                            </div>
+                    {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                </section>
+                <div class="text-center show-more-wrapper">
+                    <a href="" class="button success" title="Charger plus d'employeurs">En voir plus +</a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card float-end" style="width: 20vw;">
+                    {% if app.user.companies == null %}
+                    <h3>Votre profil</h3>
+                    <img class="card-img-top img-fluid" height="100" src="{{asset('/uploads/candidat/')}}{{myProfil.profilepicture}}" alt="Card image cap">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Nom complet : <b>{{myProfil.firstname}} {{myProfil.lastname}}</b></li>
+                            <li class="list-group-item">En recherche d'emploi : {% if myProfil.issearching == true %}<b>Oui</b>{% else %}<b>Non</b>{% endif %} </li>
+                            <li class="list-group-item">Date de naissance : <b>{{myProfil.datebirth|date('d/m/Y')}}</b></li>
+                            <li class="list-group-item">Niveau d'études : <b>BAC + {{myProfil.studieslevel}}</b></li>
+                            <li class="list-group-item">Domaine d'études: <b>{{myProfil.formations|capitalize}}</b></li>
+                            <li class="list-group-item">Experiance pro: <b>{{myProfil.formations|capitalize}}</b></li>
+                            
+                            <li class="list-group-item">Vos hard skills: {% for skill in myProfil.hardskills %}<b>{{skill}} </b>{% endfor %}</li>
+                            <li class="list-group-item">Vos soft skills: {% for skill in myProfil.softskills %}<b>{{skill}} </b>{% endfor %}</li>
+                            
+                        </ul>
+                        <a href="{{path('app_edit_candidat')}}" class="btn btn-primary mt-5 ms-1">Modifier votre profil</a>
+                    </div>
+                    {% else %}
+                    <h3>Votre entreprise</h3>
+                    <img class="card-img-top img-fluid" height="100" src="{{asset('/uploads/companies/')}}{{myProfil.logo}}" alt="Card image cap">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {# {{ dump(myProfil) }} #}
+                            <li class="list-group-item">Nom de l'entreprise : <b>{{myProfil.name}}</b></li>
+                            <li class="list-group-item">En recherche d'emploi : {% if myProfil.issearching == true %}<b>Oui</b>{% else %}<b>Non</b>{% endif %} </li>
+                            <li class="list-group-item text-justify">Region recherchée : <b>{{myProfil.searchedregion|getRegion(myProfil.searchedregion)}} ({{myProfil.searchedregion}})</b></li>
+                        </ul>
+                        <a href="{{path('app_edit_company')}}" class="btn btn-primary mt-5 ms-1">Modifier votre profil</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main><!-- #main -->
+{% endblock %}

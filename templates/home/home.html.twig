@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Page d'Accueil{% endblock %}
+{% block title %}Home | FindAJob{% endblock %}
 
 {% block body %}
 <main>
     <section id="intro" class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center">Bienvenue sur Lamatch !</h1>
+                <h1 class="text-center">Bienvenue sur FindAJob !</h1>
             </div>
         </div>
     </section>
@@ -73,7 +73,7 @@
     <section id="actions" class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <a href="matching-candidate.html" class="button success">
+                <a href="{{path('app_matching')}}" class="button success">
                     Je lance le Matching ! ⚡
                 </a>
             </div>

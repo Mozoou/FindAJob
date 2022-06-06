@@ -18,7 +18,7 @@ import './styles/pages/admin/companies.css';
 
 
 // You can specify which plugins you need
-import { Tooltip, Toast, Popover } from 'bootstrap';
+import { Tooltip, Toast, Popover, Alert } from 'bootstrap';
 
 // start the Stimulus application
 import './bootstrap';

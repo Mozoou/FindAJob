@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CandidatController!{% endblock %}
+
+{% block body %}
+<section>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img src="{{asset('uploads/candidat/')}}{{candidat.profilepicture}}" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+              <h4 class="my-3">{{candidat.firstname}} {{candidat.lastname}}</h4>
+              <h5>Web Developer</h5>
+              <p class="text-muted mb-1"><b>{{candidat.searchedregion|getRegion(candidat.searchedregion)}} ({{candidat.searchedregion}}) </b></p>
+              <p class="text-muted mb-4"></p>
+              <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4 mb-lg-0">
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush rounded-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fas fa-globe fa-lg text-warning"></i>
+                  <p class="mb-0">Linkedin</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+                  <p class="mb-0">Github</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                  <p class="mb-0">website</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Domaine</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><b>{{candidat.formations|capitalize}}</b></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><b>{{candidat.user.email}}</b></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Phone</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">(097) 234-5678</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Fax</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">(098) 765-4321</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><strong>TODO : METTRE ADRESSE ICI</strong></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">CV</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><strong>TODO : Voir le cv du candidat</strong></p>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="row gutters-sm">
+            <div class="col-sm mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                    <h5>Resume</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae beatae vitae. Velit cumque, omnis quae, facere illo autem eum id facilis, similique quibusdam necessitatibus non vero tempora quo praesentium.
+                    Distinctio non laboriosam mollitia. Ut, consequatur ducimus odio consequuntur id ipsam praesentium enim dicta, exercitationem modi mollitia vero harum libero! Porro illo odit sed earum alias doloribus perferendis voluptate sunt.
+                    Eius quae quo numquam reiciendis mollitia quibusdam, eaque vel quisquam nemo. Veniam sint nobis assumenda omnis voluptates ipsam hic velit? Porro labore dolorum libero cupiditate laudantium hic, ipsa ratione dolore?
+                    Delectus quas reiciendis tenetur quae voluptates, dolorum officia velit non atque cum nesciunt quidem cupiditate eaque saepe quod, quia molestias, laudantium voluptatibus facilis ut culpa labore vitae? Nam, adipisci delectus.
+                    Dolore saepe harum perferendis! Inventore debitis maiores reprehenderit. Iusto dolorum magni recusandae consequuntur laborum id? Optio sit fugiat similique quia saepe dolorum quaerat, quasi iure, molestias aliquam perspiciatis iste laboriosam?
+                    Fugiat, quo nisi quis sequi ullam eaque, deserunt similique consequuntur iure, rem impedit delectus unde! Minus voluptatibus a, officiis optio similique laudantium voluptate, iste nam neque maxime enim molestias. Temporibus?
+                    Iusto voluptas, accusamus sunt sapiente minima dolorum animi illum repellat, nisi aliquid culpa! Ducimus dignissimos perferendis nemo officia illum. Totam deleniti voluptas molestiae excepturi possimus est ab cupiditate ipsa. Ipsam.
+                    Saepe suscipit nisi consequatur quos est earum quibusdam dicta. Culpa recusandae magni impedit maiores illum qui aliquam dicta. Corporis quasi laudantium repellat ratione vel tempore vitae provident. Aperiam, voluptatibus quaerat.
+                    Inventore, quam iusto? Reiciendis non quidem, ratione est autem expedita sit ipsam officiis totam! Nesciunt omnis itaque id fugiat quas qui natus quidem cumque ullam at hic, ipsam porro obcaecati?
+                    Iusto animi consectetur, quaerat quae doloremque quis rem. Doloremque veniam repudiandae atque ipsam aut nam delectus consectetur explicabo cupiditate. Sint, alias. Magni, laboriosam praesentium sit dolor temporibus a veritatis adipisci.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+  </section>
+{% endblock %}

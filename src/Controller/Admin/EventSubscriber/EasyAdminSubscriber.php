@@ -1,9 +1,7 @@
 <?php
-
-namespace App\EventSubscriber;
+namespace App\Controller\Admin\EventSubscriber;
 
 use App\Entity\User;
-use App\Entity\BlogPost;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;

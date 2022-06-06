@@ -39,20 +39,22 @@ class CompaniesRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Companies[] Returns an array of Companies objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+    * @return Companies[] Returns an array of Companies objects
+    */
+   public function findByCriteria($domaine, $region): array
+   {
+       return $this->createQueryBuilder('c')
+           ->andWhere('c.searching_for LIKE :domaine')
+           ->andWhere('c.is_searching = true')
+           ->andWhere('c.searched_region = :region')
+           ->setParameter('domaine', '%' .$domaine. '%')
+           ->setParameter('region', $region)
+           ->orderBy('c.id', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
 //    public function findOneBySomeField($value): ?Companies
 //    {

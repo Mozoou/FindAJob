@@ -27,7 +27,7 @@ class CandidatType extends AbstractType
     {
         $path = $this->parameterBag->get('kernel.project_dir');
         $regions = [];
-        $row = 2;
+        $row = 1;
         if (($handle = fopen($path . '/public/csv/departements-region.csv', 'r')) !== FALSE) {
             fgetcsv($handle, 10000, ",");
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -62,6 +62,7 @@ class CandidatType extends AbstractType
             ])
             ->add('profile_picture', FileType::class, [
                 'label' => 'Photo de profil',
+                'data_class' => null,
                 'constraints' => [
                     new File([
                         'maxSize' => '2000k',
@@ -82,10 +83,9 @@ class CandidatType extends AbstractType
                 'label' => 'Domaine d\'études',
                 'choices'  => [
                     'Informatique' => 'informatique',
-                    'Graphisme' => 'graphisme',
-                    'Livreur' => 'livreur',
-                    'Chauffeur' => 'chauffeur',
-                    'Agent de sécurité' => 'Agent de sécurité'
+                    'Design' => 'design',
+                    'Trasport' => 'trasport',
+                    'RH' => 'rh',
                 ],
             ])
             ->add('studies_level', ChoiceType::class, [

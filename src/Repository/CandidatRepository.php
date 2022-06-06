@@ -39,28 +39,39 @@ class CandidatRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Candidat[] Returns an array of Candidat objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Candidat[] Returns an array of Companies objects
+     */
+    public function findByCriteria(array $domaines, int $region): array
+    {
+        $query = $this->createQueryBuilder('c');
+        $where = '';
+        $i = 0;
+        $numItems = count($domaines);
+        foreach ($domaines as $domaine) {
+            if (++$i === $numItems) {
+                $query->andWhere($where.'c.formations LIKE :'.$domaine);
+            } else {
+                $where .= 'c.formations LIKE :'.$domaine.' OR ';
+            }
+            $query->setParameter($domaine, '%'.$domaine.'%');
+        }
+        return $query
+            ->andWhere('c.is_searching = true')
+            ->andWhere('c.searched_region = :region')
+            ->setParameter('region', $region)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Candidat
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Candidat
+    //    {
+    //        return $this->createQueryBuilder('c')
+    //            ->andWhere('c.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }
