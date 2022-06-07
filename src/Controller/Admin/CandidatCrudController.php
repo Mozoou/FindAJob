@@ -32,13 +32,13 @@ class CandidatCrudController extends AbstractCrudController
                 ->setBasePath('uploads/images/')
                 ->setUploadDir('public/uploads/images/'),
             DateField::new('date_birth'),
-            ChoiceField::new('formations')->setChoices([
-                'Informatique' => 'informatique',
-                'Graphisme' => 'graphisme',
-                'Livreur' => 'livreur',
-                'Chauffeur' => 'chauffeur',
-                'Agent de sécurité' => 'Agent de sécurité'
-            ]),
+            // ChoiceField::new('formations')->setChoices([
+            //     'Informatique' => 'informatique',
+            //     'Graphisme' => 'graphisme',
+            //     'Livreur' => 'livreur',
+            //     'Chauffeur' => 'chauffeur',
+            //     'Agent de sécurité' => 'Agent de sécurité'
+            // ]),
             ChoiceField::new('studies_level')->setChoices([
                 'BAC' => '1',
                 'BAC+2' => '2',

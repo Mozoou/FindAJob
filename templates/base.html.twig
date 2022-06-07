@@ -26,8 +26,14 @@
             <ul class="navbar-items d-flex">
               {% if app.user == null %}
               <li>
-                <a title="Me déconnecter" href="{{path('app_logout')}}" class="btn btn-primary menu-link button">
-                  Connexion
+                <a href="{{path('app_logout')}}" class="btn btn-primary menu-link button">
+                  Sign in
+                  <span></span>
+                </a>
+              </li>
+              <li>
+                <a href="{{path('app_register')}}" class="btn btn-primary menu-link button">
+                  Sign Up
                   <span></span>
                 </a>
               </li>
@@ -38,7 +44,7 @@
                 </a>
               </li>
               <li>
-                <a title="Me déconnecter" href="{{path('app_logout')}}" class="btn btn-primary menu-link button">
+                <a href="{{path('app_logout')}}" class="btn btn-primary menu-link button">
                   Déconnexion
                   <span></span>
                 </a>

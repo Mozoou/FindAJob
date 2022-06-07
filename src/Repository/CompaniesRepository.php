@@ -45,10 +45,10 @@ class CompaniesRepository extends ServiceEntityRepository
    public function findByCriteria($domaine, $region): array
    {
        return $this->createQueryBuilder('c')
-           ->andWhere('c.searching_for LIKE :domaine')
+        //    ->andWhere('c.searching_for LIKE :domaine')
            ->andWhere('c.is_searching = true')
            ->andWhere('c.searched_region = :region')
-           ->setParameter('domaine', '%' .$domaine. '%')
+        //    ->setParameter('domaine', '%' .$domaine. '%')
            ->setParameter('region', $region)
            ->orderBy('c.id', 'ASC')
            ->getQuery()

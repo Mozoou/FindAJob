@@ -78,7 +78,7 @@
                             {{form_label(CandidatForm.is_searching)}}
                             {{form_widget(CandidatForm.is_searching, {'attr': {'class': 'p-2'}})}}
                         </div>
-                        <div class="form-group">
+                        {# <div class="form-group">
                             {{form_label(CandidatForm.hard_skills)}}
                             <ul id="hard-skills-fields-list" class="list-group"
                             data-prototype="{{ form_widget(CandidatForm.hard_skills.vars.prototype)|e }}"
@@ -107,31 +107,49 @@
                             {% endfor %}
                             </ul>
                             <button type="button" class="btn btn-primary add-another-soft-skill-widget" data-list-selector="#soft-skills-fields-list">Ajouter un soft skill</button>
+                        </div> #}
+                        <div class="form-group mb-5">
+                            <button type="button" class="btn btn-primary modal-input" data-toggle="modal" data-target="#exampleModal">
+                                Ajouter votre parcours professionnel
+                            </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Vos expériences professionnel</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{ form_start(CandidatForm.expPros) }}
+                                        {{form_end(CandidatForm.expPros)}}
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            
                         </div>
-                        <div class="form-group">
-                            {{form_label(CandidatForm.formations)}}
-                            {{form_widget(CandidatForm.formations, {'attr': {'class': 'form-control'}})}}
-                        </div>
-                        <div class="form-group">
-                            {{form_label(CandidatForm.studies_level)}}
-                            {{form_widget(CandidatForm.studies_level, {'attr': {'class': 'form-control'}})}}
-                        </div>
-                        <div class="form-group">
-                            {{form_label(CandidatForm.pro_exp)}}
-                            {{form_widget(CandidatForm.pro_exp, {'attr': {'class': 'form-control'}})}}
-                        </div>
-                            {{form_label(CandidatForm.linkdin)}}
+                            {{form_label(CandidatForm.linkedin)}}
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon3">https://www.linkedin.com/in/</span>
                                 </div>
-                                    {{form_widget(CandidatForm.linkdin, {'attr': {'class': 'form-control'}})}}
+                                    {{form_widget(CandidatForm.linkedin, {'attr': {'class': 'form-control'}})}}
                             </div>
                         <div class="form-group">
                             {{form_label(CandidatForm.searched_region)}}
                             {{form_widget(CandidatForm.searched_region, {'attr': {'class': 'form-control'}})}}
                         </div>
                         {{ form_row(CandidatForm._token) }}
+                        <div class="form-group">
+                        <ul class="expPros"
+                            data-index="{{ CandidatForm.expPros|length > 0 ? CandidatForm.expPros|last.vars.name + 1 : 0 }}"
+                            data-prototype="{{ form_widget(CandidatForm.expPros.vars.prototype)|e('html_attr') }}">
+                        </ul>
+                        <button type="button" class="add_item_link" data-collection-holder-class="expPros">Add a tag</button>
+                        </div>
                         <div class="form-group mt-5">
                             {{form_row(CandidatForm.Submit)}}
                         </div>
@@ -141,43 +159,75 @@
         </div>
 {% endblock %}
 {% block javascripts %}
+<script>
+    const addFormToCollection = (e) => {
+        const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+
+        console.log(e.currentTarget.dataset.collectionHolderClass)
+      
+        const item = document.createElement('li');
+      
+        item.innerHTML = collectionHolder
+          .dataset
+          .prototype
+          .replace(
+            /__name__/g,
+            collectionHolder.dataset.index
+          );
+      
+        collectionHolder.appendChild(item);
+      
+        collectionHolder.dataset.index++;
+      };
+    document
+  .querySelectorAll('.add_item_link')
+  .forEach(btn => {
+      btn.addEventListener("click", addFormToCollection)
+  });
+    
+</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script>
-        function addAnotherCollectionField(element = ''){
-                var list = $('#'+element)
-                // Try to find the counter of the list or use the length of the list
-                var counter = list.data('widget-counter') || list.children().length;
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+    function addAnotherCollectionField(element = ''){
+        var list = $('#'+element)
+        // Try to find the counter of the list or use the length of the list
+        var counter = list.data('widget-counter') || list.children().length;
+    
+        // grab the prototype template
+        var newWidget = list.attr('data-prototype');
+        // replace the "__name__" used in the id and name of the prototype
+        // with a number that's unique to your emails
+        // end name attribute looks like name="contact[emails][2]"
+        newWidget = newWidget.replace(/__name__/g, counter);
+        // Increase the counter
+        counter++;
+        // And store it, the length cannot be used if deleting widgets is allowed
+        list.data('widget-counter', counter);
         
-                // grab the prototype template
-                var newWidget = list.attr('data-prototype');
-                // replace the "__name__" used in the id and name of the prototype
-                // with a number that's unique to your emails
-                // end name attribute looks like name="contact[emails][2]"
-                newWidget = newWidget.replace(/__name__/g, counter);
-                // Increase the counter
-                counter++;
-                // And store it, the length cannot be used if deleting widgets is allowed
-                list.data('widget-counter', counter);
-                
-                // create a new list element and add it to the list
-                var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
-                newElem.children().first().addClass('form-control')
-                newElem.addClass('list-group-item')
-                newElem.appendTo(list);
-        }
-        jQuery(document).ready(function () {
-            $('.add-another-soft-skill-widget').on('click', function(e){
-                addAnotherCollectionField('soft-skills-fields-list')
-            })
-            $('.add-another-hard-skill-widget').on('click', function(e){
-                addAnotherCollectionField('hard-skills-fields-list')
-            })
-
-            if($('.alert').is(':empty') ){
-                $('.alert').addClass('hidden')
-            }
-
-        });
-    </script>
+        // create a new list element and add it to the list
+        var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+        newElem.children().first().addClass('form-control')
+        newElem.addClass('list-group-item')
+        newElem.appendTo(list);
+    }
+    
+    jQuery(document).ready(function () {
+    $('.add-another-soft-skill-widget').on('click', function(e){
+        addAnotherCollectionField('soft-skills-fields-list')
+    })
+    $('.add-another-hard-skill-widget').on('click', function(e){
+        addAnotherCollectionField('hard-skills-fields-list')
+    })
+    
+    if($('.alert').is(':empty') ){
+        $('.alert').addClass('hidden')
+    }
+    $('.input-modal').on('click', function(e){
+        $('#exampleModal').modal();
+    })
+    });
+    
+</script>
 {% endblock %}
 

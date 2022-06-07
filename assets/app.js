@@ -18,7 +18,15 @@ import './styles/pages/admin/companies.css';
 
 
 // You can specify which plugins you need
-import { Tooltip, Toast, Popover, Alert } from 'bootstrap';
+import { Tooltip, Toast, Popover, Alert, Modal } from 'bootstrap';
+
 
 // start the Stimulus application
 import './bootstrap';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Home from './components/Home';
+    
+ReactDOM.render(<Router><Home /></Router>, document.getElementById('root'));

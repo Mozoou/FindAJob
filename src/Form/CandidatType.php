@@ -88,39 +88,12 @@ class CandidatType extends AbstractType
                     'RH' => 'rh',
                 ],
             ])
-            ->add('studies_level', ChoiceType::class, [
-                'label' => 'Niveau d\'études',
-                'choices'  => [
-                    'BAC' => '1',
-                    'BAC+2' => '2',
-                    'BAC+3' => '3',
-                    'BAC+4' => '4',
-                    'BAC+5' => '5'
-                ],
-            ])
-            ->add('pro_exp', ChoiceType::class, [
-                'label' => 'Expériance professionnelle',
-                'choices' => [
-                    '> à 1 an' => '1',
-                    'entre 2 ans et 5 ans' => '2',
-                    '+ de 5 ans' => '3'
-                ]
-            ])
-            ->add('hard_skills', CollectionType::class, [
-                'label' => 'Hard Skills',
-                'entry_type' => TextType::class,
+            ->add('expPros', CollectionType::class, [
+                'entry_type' => ExpProType::class,
+                'entry_options' => ['label' => false],
                 'allow_add' => true,
-                'prototype' => true,
-                'prototype_data' => '',
             ])
-            ->add('soft_skills', CollectionType::class, [
-                'label' => 'Soft Skills',
-                'entry_type' => TextType::class,
-                'allow_add' => true,
-                'prototype' => true,
-                'prototype_data' => '',
-            ])
-            ->add('linkdin', TextType::class, [
+            ->add('linkedin', TextType::class, [
                 'attr' => ['aria-describedby' => 'basic-addon3'],
             ])
             ->add('searched_region', ChoiceType::class, [

@@ -75,10 +75,10 @@
                                 <h4 class="mb-0 mt-0">{{profil.firstname}} {{profil.lastname}}</h4>
                                 <span>Developpeur PHP</span>
                                 <ul class="list-group list-group-flush mt-2">
-                                    <li class="list-group-item">En recherche d'emploi : {% if profil.issearching == true %}<b>Oui</b>{% else %}<b>Non</b>{% endif %} </li>
-                                    <li class="list-group-item">Date de naissance : <b>{{profil.datebirth|date('d/m/Y')}}</b></li>
-                                    <li class="list-group-item">Exp professionnel: <b>{{profil.proexp|showExp(profil.proexp)}}</b></li>
-                                    <li class="list-group-item">Niveau d'études: <b>BAC +{{profil.studieslevel}}</b></li>
+                                    {# <li class="list-group-item">En recherche d'emploi : {% if profil.issearching == true %}<b>Oui</b>{% else %}<b>Non</b>{% endif %} </li>
+                                    <li class="list-group-item">Date de naissance : <b>{{profil.datebirth|date('d/m/Y')}}</b></li> #}
+                                    {# <li class="list-group-item">Exp professionnel: <b>{{profil.proexp|showExp(profil.proexp)}}</b></li> #}
+                                    {# <li class="list-group-item">Niveau d'études: <b>BAC +{{profil.studieslevel}}</b></li> #}
                                 </ul>
                                 
                                 <div class="mt-2 d-flex flex-row align-items-center">
@@ -99,12 +99,13 @@
             </div>
             <div class="col-4">
                 <div class="card float-end" style="width: 20vw;">
+                    {{ dump(myProfil.formations) }}
                     {% if app.user.companies == null %}
                     <h3>Votre profil</h3>
                     <img class="card-img-top img-fluid" height="100" src="{{asset('/uploads/candidat/')}}{{myProfil.profilepicture}}" alt="Card image cap">
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Nom complet : <b>{{myProfil.firstname}} {{myProfil.lastname}}</b></li>
+                            {# <li class="list-group-item">Nom complet : <b>{{myProfil.firstname}} {{myProfil.lastname}}</b></li>
                             <li class="list-group-item">En recherche d'emploi : {% if myProfil.issearching == true %}<b>Oui</b>{% else %}<b>Non</b>{% endif %} </li>
                             <li class="list-group-item">Date de naissance : <b>{{myProfil.datebirth|date('d/m/Y')}}</b></li>
                             <li class="list-group-item">Niveau d'études : <b>BAC + {{myProfil.studieslevel}}</b></li>
@@ -112,7 +113,7 @@
                             <li class="list-group-item">Experiance pro: <b>{{myProfil.formations|capitalize}}</b></li>
                             
                             <li class="list-group-item">Vos hard skills: {% for skill in myProfil.hardskills %}<b>{{skill}} </b>{% endfor %}</li>
-                            <li class="list-group-item">Vos soft skills: {% for skill in myProfil.softskills %}<b>{{skill}} </b>{% endfor %}</li>
+                            <li class="list-group-item">Vos soft skills: {% for skill in myProfil.softskills %}<b>{{skill}} </b>{% endfor %}</li> #}
                             
                         </ul>
                         <a href="{{path('app_edit_candidat')}}" class="btn btn-primary mt-5 ms-1">Modifier votre profil</a>
