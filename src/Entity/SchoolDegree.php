@@ -18,15 +18,16 @@ class SchoolDegree
     #[ORM\Column(type: 'string', length: 255)]
     private $level;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $study_field;
-
     #[ORM\OneToMany(mappedBy: 'school_degree', targetEntity: Formations::class)]
     private $formations;
 
     public function __construct()
     {
         $this->formations = new ArrayCollection();
+    }
+    public function __toString()
+    {
+        return $this->getLevel();
     }
     public function getId(): ?int
     {
@@ -44,19 +45,6 @@ class SchoolDegree
 
         return $this;
     }
-
-    public function getStudyField(): ?string
-    {
-        return $this->study_field;
-    }
-
-    public function setStudyField(string $study_field): self
-    {
-        $this->study_field = $study_field;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Formations>
      */

@@ -97,6 +97,7 @@ class CandidatController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
+            // dd($form->get('expPros')->getData()->getValues());
             $candidat->setFirstname($form->get('firstname')->getData());
             $candidat->setLastname($form->get('lastname')->getData());
             $ProfilePictureFile = $form->get('profile_picture')->getData();

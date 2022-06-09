@@ -18,10 +18,10 @@ class Companies
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string', length:255)]
     private $siret;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string', length:255)]
     private $siren;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -39,10 +39,10 @@ class Companies
     #[ORM\Column(type: 'array')]
     private $searching_for = [];
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string', length:255)]
     private $phone;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
+    #[ORM\Column(type: 'string', length:255, nullable: true)]
     private $fax;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -76,24 +76,24 @@ class Companies
         return $this;
     }
 
-    public function getSiret(): ?int
+    public function getSiret(): ?string
     {
         return $this->siret;
     }
 
-    public function setSiret(int $siret): self
+    public function setSiret(string $siret): self
     {
         $this->siret = $siret;
 
         return $this;
     }
 
-    public function getSiren(): ?int
+    public function getSiren(): ?string
     {
         return $this->siren;
     }
 
-    public function setSiren(int $siren): self
+    public function setSiren(string $siren): self
     {
         $this->siren = $siren;
 
@@ -160,24 +160,24 @@ class Companies
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function setPhone(int $phone): self
+    public function setPhone(string $phone): self
     {
         $this->phone = $phone;
 
         return $this;
     }
 
-    public function getFax(): ?int
+    public function getFax(): ?string
     {
         return $this->fax;
     }
 
-    public function setFax(?int $fax): self
+    public function setFax(?string $fax): self
     {
         $this->fax = $fax;
 
@@ -209,7 +209,7 @@ class Companies
     }
 
     /**
-     * @return Collection<int, User>
+     * @return Collection<string, User>
      */
     public function getUsers(): Collection
     {

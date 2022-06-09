@@ -3,11 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Companies;
+use App\Services\CsvHandler;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
-use App\Form\EventSubscriber\CompaniesFormSubscriber;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -22,28 +22,9 @@ class CompaniesType extends AbstractType
 {
     protected $parameterBag;
 
-    public function __construct(ParameterBagInterface $parameterBag)
+    public function __construct(CsvHandler $csvHandler)
     {
-        $this->parameterBag = $parameterBag;
-    }
-    
-    public function getRegionFromCsv()
-    {
-        $path = $this->parameterBag->get('kernel.project_dir');
-        $regions = [];
-        $row = 2;
-        if (($handle = fopen($path . '/public/csv/departements-region.csv', 'r')) !== FALSE) {
-            fgetcsv($handle, 10000, ",");
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                $num = count($data);
-                $row++;
-                array_pop($data);
-
-                $regions[$data[0].' - '.$data[1]] = $data[0];
-            }
-            fclose($handle);
-            return ($regions);
-        }
+        $this->csvHandler = $csvHandler;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -117,7 +98,7 @@ class CompaniesType extends AbstractType
             ])
             ->add('searched_region', ChoiceType::class, [
                 'label' => 'Region recherchée',
-                'choices' => $this->getRegionFromCsv(),
+                'choices' => $this->csvHandler->getRegionFromCsv(),
             ])
             ->add('Submit', SubmitType::class, [
                 'label' => 'Enregistrer',

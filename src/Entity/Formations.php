@@ -22,9 +22,6 @@ class Formations
     #[ORM\Column(type: 'boolean')]
     private $currently;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $level;
-
     #[ORM\ManyToOne(targetEntity: SchoolDegree::class, inversedBy: 'formations')]
     #[ORM\JoinColumn(nullable: false)]
     private $school_degree;

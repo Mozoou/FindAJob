@@ -1,0 +1,19 @@
+ID;Intitulé;Catégorie;Sous-catégorie
+1;Recherche juridique;Droit;
+2;Rédaction juridique;Droit;
+3;Droit des affaires;Droit;
+4;HTML;Informatique;Front
+5;CSS;Informatique;Front
+6;JS;Informatique;Front
+7;PHP;Informatique;Back
+8;MySQL;Informatique;Base de données
+9;Cassandra;Informatique;Base de données
+10;Symfony;Informatique;Back
+11;VueJS;Informatique;Front
+12;Nuxt;Informatique;Front
+13;MongoDB;Informatique;Base de données
+14;Linux;Informatique;OS
+15;Windows;Informatique;OS
+16;Mac OS;Informatique;OS
+17;Android;Informatique;OS
+18;iOS;Informatique;OS
